@@ -1,0 +1,31 @@
+<table border="2" style="text-align: center">
+    <tr>
+        {#        <td>Ref</td>#}
+        <td>Title</td>
+        <td>publicationDate</td>
+        <td>published</td>
+
+        <td>Category</td>
+        <td>Author</td>
+        <td>Nombre de livres</td>
+        <td colspan="2">Action</td>
+
+    </tr>
+
+
+
+    {% for i in results %}
+        <tr>
+            {#        <td>{{ i.ref }}</td>#}
+            <td>{{ i.title }}</td>
+            <td>{{ i.publicationdate|date('d F Y') }}</td>
+            <td>{{ i.published }}</td>
+            <td>{{ i.category }}</td>
+            <td>{{ i.author.username }}</td>
+            <td>{{ i.author.nbbooks }}</td>
+            <td><a href="{{path('editbook',{'id':i.ref})}}">edit</a></td>
+            <td><a href="{{path('deletebook',{'id':i.ref})}}">delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<td><a href="{{path('addbook')}}"><button >Add Book</button> </a></td>
